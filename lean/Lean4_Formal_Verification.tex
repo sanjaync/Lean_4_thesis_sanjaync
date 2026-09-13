@@ -1,0 +1,45 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{setspace}
+
+\title{\textbf{Formal Verification of Ecohydrological Formulations using Lean 4}}
+\author{Sanjay \\ Indian Institute of Technology Bombay}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\setstretch{1.15}
+
+\section{Introduction: What is Lean 4?}
+Lean 4 is an advanced interactive theorem prover and programming language designed to digitize and mathematically verify formal systems. In computational sciences, models are typically derived algebraically on paper and directly implemented in programming languages (e.g., Python, Fortran) for empirical validation. While empirical testing demonstrates that a model performs adequately over historical datasets, it cannot exhaustively prove structural soundness under all extreme boundary conditions. Lean 4 acts as a strict mathematical kernel, requiring explicit logical proofs for every identity, bound, and constraint within a model, guaranteeing absolute mathematical correctness by construction.
+
+\section{Methodology: What We Did}
+In this project, the core mathematical formulations spanning Chapters 2, 5, 6, and 7 of the PhD thesis were fully formalized and verified using Lean 4 and the Mathlib library. Specifically, the following foundational components of the hyper-resolution PT-JPL-SM-OWUS model were formally proven:
+\begin{itemize}[itemsep=4pt, parsep=0pt, topsep=4pt]
+    \item \textbf{Energy Balance and Conservation (Chapter 2, 4):} Formal verification of the additive radiation partitions (Beer's Law) and thermodynamic identity conservation (e.g., $R_n = \lambda E + H + G$).
+    \item \textbf{Vegetation Stress and Limits (Chapter 2, 5):} Rigorous proofs bounding the piecewise empirical stress functions and the Optimal Water Use Strategy (OWUS) response strictly within the physical $[0, 1]$ interval.
+    \item \textbf{Monotonicity and Convexity (Chapter 4, 5, 6):} Explicit verification that the optimal vegetation stress function is monotonically non-decreasing with respect to soil moisture, and that the Kalman Filter data assimilation updates inherently satisfy convex combination properties and strictly reduce posterior variance.
+    \item \textbf{Structural Equivalences (Chapter 7):} Algebraic proofs demonstrating that the synthesized multi-chapter frameworks flawlessly degenerate to simpler linear constraints under boundary conditions, ensuring global consistency.
+\end{itemize}
+
+\section{Importance to the Thesis}
+Integrating formal verification into the development of an ecohydrological model represents a significant methodological advancement. Its importance to the thesis can be summarized in three key dimensions:
+
+\subsection{1. Machine-Checked Mathematical Rigor}
+Traditional environmental modeling relies heavily on human-checked derivations, which are susceptible to algebraic oversights or unhandled edge cases (e.g., division by zero at absolute wilting point or zero Leaf Area Index). By submitting the model to Lean 4, the kernel mathematically certified every fractional division, piecewise condition, and logical split, ensuring the framework is structurally flawless at a fundamental level.
+
+\subsection{2. Absolute Theoretical Consistency}
+The verification process algebraically proved that the empirical formulations developed in Chapter 2 perfectly align with the complex synthetic framework proposed in Chapter 7. Furthermore, it mathematically guarantees that the optimal water use constraints mathematically degenerate back to foundational theories when parameter thresholds are met. This establishes that the various chapters of the thesis are not merely isolated ideas, but constitute a deeply unified and logically consistent physical theory.
+
+\subsection{3. Scientific Trust and Reproducibility}
+The Lean 4 proofs provide an absolute guarantee to reviewers and the scientific community. The compiled project asserts that it is virtually impossible for the core partitioning rules, constraints, and stress formulas to contain hidden mathematical contradictions. This dramatically elevates the credibility and robustness of the proposed PT-JPL-SM-OWUS framework, distinguishing it from purely empirical models.
+
+\end{document}

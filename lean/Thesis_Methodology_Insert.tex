@@ -1,0 +1,53 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{setspace}
+
+\title{\textbf{Proposed Thesis/Paper Insert: Mathematical Verification}}
+\author{Sanjay \\ Indian Institute of Technology Bombay}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\setstretch{1.2}
+
+\section*{Guidance on Including this in your Thesis/Paper}
+\textit{Since you cannot directly upload .lean files into a thesis PDF or a standard journal submission, the standard practice in computational sciences is to write a short subsection in your \textbf{Methodology} or \textbf{Mathematical Framework} chapter explaining the verification process, and then host the actual code on a public repository (like GitHub or Zenodo) as Supplementary Material.}
+
+\vspace{0.5cm}
+\noindent Below is a formally written text block that you can directly copy and paste into your thesis or research paper:
+
+\rule{\textwidth}{0.4pt}
+\vspace{0.3cm}
+
+\section*{Methodology Insert: Formal Mathematical Verification}
+
+To ensure the absolute theoretical consistency and structural soundness of the proposed hyper-resolution ecohydrological model, the core mathematical formulations spanning the optimal water use strategy (OWUS) and the PT-JPL energy partitioning were subjected to formal machine-checked verification. 
+
+While ecohydrological models are traditionally evaluated empirically against historical data, empirical validation cannot exhaustively guarantee the absence of theoretical contradictions or unhandled physical edge cases (e.g., behavior exactly at the wilting point, or at an absolute zero leaf area index). To overcome this limitation, the fundamental physical constraints, thermodynamic identities, and piecewise vegetation stress formulations developed in this study were translated into the Lean 4 interactive theorem prover (de Moura et al., 2021). 
+
+Relying on the foundational Mathlib library, strict mathematical proofs were constructed to algebraically verify the model's behavior. The Lean 4 kernel mathematically certified that:
+\begin{enumerate}
+    \item \textbf{Strict Physical Bounds:} The optimal vegetation stress response ($\beta$) and soil evaporation mixing coefficients monotonically and strictly obey their $[0, 1]$ bounds under all possible physical conditions.
+    \item \textbf{Structural Consistency:} The complex optimal water use strategy mathematically degenerates to the foundational linear stress formulations under extreme boundary constraints without contradiction.
+    \item \textbf{Data Assimilation Convexity:} The Kalman Filter state updates inherently satisfy convex combination properties, guaranteeing a strict reduction in posterior variance.
+\end{enumerate}
+
+By successfully compiling these proofs in a strict mathematical kernel, we establish a machine-checked guarantee that the core mathematical partitioning rules and stress formulas proposed in this framework are logically sound, algebraically robust, and free of hidden structural contradictions. The complete Lean 4 source code and the associated machine-checked proofs are available as supplementary material in the project's data repository.
+
+\vspace{0.3cm}
+\rule{\textwidth}{0.4pt}
+
+\vspace{0.5cm}
+\section*{References to Include}
+\noindent If you use the text above, you should add the following citation to your bibliography for Lean 4: \\
+\small
+\noindent \textbf{de Moura, L., \& Ullrich, S. (2021).} \textit{The Lean 4 theorem prover and programming language.} In Automated Deduction--CADE 28: 28th International Conference on Automated Deduction, Virtual Event, July 12--15, 2021, Proceedings 28 (pp. 625-635). Springer International Publishing.
+
+\end{document}
